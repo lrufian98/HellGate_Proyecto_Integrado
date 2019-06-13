@@ -61,7 +61,8 @@ public class CombatePerro : MonoBehaviour
             Debug.Log("Golpe Recibido");
             if (vida <= 0)
             {
-                Destroy(gameObject);
+                dano = 0;
+                anim.SetTrigger("Muerte");
             }
             invulnerable = true;
             if (player.transform.position.x - transform.position.x < 0)
@@ -78,6 +79,10 @@ public class CombatePerro : MonoBehaviour
             Invoke("Mortal",0.6f);
         }
         
+    }
+    void Muerte()
+    {
+        Destroy(gameObject);
     }
     
     public void Mortal()

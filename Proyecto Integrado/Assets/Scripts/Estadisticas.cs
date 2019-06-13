@@ -78,51 +78,79 @@ public class Estadisticas : MonoBehaviour
             if (vidaPj > 0)
             {
                 vidaPj = vidaPj - a;
-                if (vidaPj == 9)
+                if (vidaPj <= 1)
                 {
-                    corazon5.sprite = halfHeart;
+                    corazon1.sprite = halfHeart;
+                    corazon2.sprite = voidHeart;
+                    corazon3.sprite = voidHeart;
+                    corazon4.sprite = voidHeart;
+                    corazon5.sprite = voidHeart;
                 }
-                if (vidaPj == 8)
+                else if (vidaPj <= 2)
+                {
+                    corazon2.sprite = voidHeart;
+                    corazon3.sprite = voidHeart;
+                    corazon4.sprite = voidHeart;
+                    corazon5.sprite = voidHeart;
+                }
+                else if (vidaPj <= 3)
+                {
+                    corazon2.sprite = halfHeart;
+                    corazon3.sprite = voidHeart;
+                    corazon4.sprite = voidHeart;
+                    corazon5.sprite = voidHeart;
+                }
+                else if (vidaPj <= 4)
+                {
+                    corazon3.sprite = voidHeart;
+                    corazon4.sprite = voidHeart;
+                    corazon5.sprite = voidHeart;
+                }
+                else if (vidaPj <= 5)
+                {
+                    corazon3.sprite = halfHeart;
+                    corazon4.sprite = voidHeart;
+                    corazon5.sprite = voidHeart;
+                }
+                else if (vidaPj <= 6)
+                {
+                    corazon4.sprite = voidHeart;
+                    corazon5.sprite = voidHeart;
+                }
+                else if (vidaPj <= 7)
+                {
+                    corazon4.sprite = halfHeart;
+                    corazon5.sprite = voidHeart;
+                }
+                else if (vidaPj <= 8)
                 {
                     corazon5.sprite = voidHeart;
                 }
-                if (vidaPj == 7)
+                else if (vidaPj <= 9)
                 {
-                    corazon4.sprite = halfHeart;
-                }
-                if (vidaPj == 6)
-                {
-                    corazon4.sprite = voidHeart;
-                }
-                if (vidaPj == 5)
-                {
-                    corazon3.sprite = halfHeart;
-                }
-                if (vidaPj == 4)
-                {
-                    corazon3.sprite = voidHeart;
-                }
-                if (vidaPj == 3)
-                {
-                    corazon2.sprite = halfHeart;
-                }
-                if (vidaPj == 2)
-                {
-                    corazon2.sprite = voidHeart;
-                }
-                if (vidaPj == 1)
-                {
-                    corazon1.sprite = halfHeart;
+                    corazon5.sprite = halfHeart;
                 }
                 TiempoInvulnerable();
             }
             if (vidaPj < 1)
             {
-                Destroy(gameObject);
-                animMuerte.SetTrigger("activa");
+                corazon1.sprite = voidHeart;
+                corazon2.sprite = voidHeart;
+                corazon3.sprite = voidHeart;
+                corazon4.sprite = voidHeart;
+                corazon5.sprite = voidHeart;
+
+                animPj.SetTrigger("Muerte");
             }
         }
         
+    }
+
+    void Muerte()
+    {
+        Destroy(gameObject);
+        animMuerte.SetTrigger("activa");
+        Time.timeScale = 0;
     }
 
 

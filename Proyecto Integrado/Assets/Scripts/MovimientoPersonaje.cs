@@ -8,7 +8,7 @@ public class MovimientoPersonaje : MonoBehaviour
     Animator animPj;
 
     public float fuerza = 10;
-    public float velocidadMax = 5;
+    public float velocidadMax = 7;
     public float fuerzaSalto = 300;
     public bool miraDerecha = true;
 

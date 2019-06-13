@@ -12,13 +12,14 @@ public class CombateCraneo : MonoBehaviour
     bool persiguePlayer;
 
     SpriteRenderer spr;
-
+    Animator anim;
     Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
         spr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -59,12 +60,18 @@ public class CombateCraneo : MonoBehaviour
             Debug.Log("Golpe Recibido");
             if (vida <= 0)
             {
-                Destroy(gameObject);
+                dano = 0;
+                anim.SetTrigger("Muerte");
             }
             
             Invoke("Mortal",0.6f);
         }
         
+    }
+
+    void Muerte()
+    {
+        Destroy(gameObject);
     }
     
     public void Mortal()

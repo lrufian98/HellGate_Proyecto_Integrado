@@ -23,7 +23,7 @@ TextureImporter:
     21300036: _sheet_window_15_18
     21300038: _sheet_window_15_19
   externalObjects: {}
-  serializedVersion: 7
+  serializedVersion: 9
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -51,7 +51,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -144,7 +144,7 @@ TextureImporter:
         height: 47
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 4, y: 5, z: 4, w: 4}
+      border: {x: 24, y: 24, z: 24, w: 23}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -159,12 +159,12 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 17
+        y: 16
         width: 16
         height: 47
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 4, y: 5, z: 4, w: 4}
+      border: {x: 8, y: 23, z: 8, w: 24}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -224,7 +224,7 @@ TextureImporter:
         height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 4, y: 6, z: 4, w: 4}
+      border: {x: 24, y: 8, z: 24, w: 7}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -244,7 +244,7 @@ TextureImporter:
         height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 4, y: 6, z: 4, w: 4}
+      border: {x: 8, y: 8, z: 8, w: 7}
       outline: []
       physicsShape: []
       tessellationDetail: 0
