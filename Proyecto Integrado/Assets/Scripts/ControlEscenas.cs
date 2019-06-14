@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class ControlEscenas : MonoBehaviour
 {
-    // Start is called before the first frame update
-    
+    //Estas funciones están asignadas a los botones
+    //que aparecen en los menús
+
+    //Función que carga la escena de Juego    
     public void ComienzaPartida()
     {
         SceneManager.LoadScene(1);
@@ -15,6 +17,7 @@ public class ControlEscenas : MonoBehaviour
             Time.timeScale = 1f;
         }
     }
+    //Función que carga la escena del Menú Principal
     public void MenuPrincipal()
     {
         SceneManager.LoadScene(0);
@@ -23,6 +26,7 @@ public class ControlEscenas : MonoBehaviour
             Time.timeScale = 1f;
         }
     }
+    //Función que cierra el juego
     public void CerrarJuego()
     {
         Application.Quit();

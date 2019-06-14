@@ -7,13 +7,9 @@ public class UIControl : MonoBehaviour
     bool pausa = false;
     public Animator menuPausa;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    //Se detecta cuando se pulsa la tecla "Escape"
+    //y activa la función Pausa, que detiene el tiempo
+    //y hace aparecer el menú de pausa en pantalla
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

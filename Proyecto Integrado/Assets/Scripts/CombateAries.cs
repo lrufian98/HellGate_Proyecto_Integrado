@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CombateAries : MonoBehaviour
 {
+
+    //Variables
     int vida = 10;
     int dano = 1;
     bool invulnerable = false;
@@ -11,7 +13,7 @@ public class CombateAries : MonoBehaviour
     bool rageMode;
 
     GameObject player;
-    bool persiguePlayer;
+    
 
     SpriteRenderer spr;
     Rigidbody2D rb;
@@ -27,21 +29,20 @@ public class CombateAries : MonoBehaviour
     public GameObject corvus;
 
     public BoxCollider2D borde;
-    // Start is called before the first frame update
+
+    //Función Start en la que se inicializan las variables que dependan de componentes de objetos
     void Start()
     {
         spr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+        //estas variables se inicializan con los objetos de el nombre indicado que existan en la escena
         puntoIzq = GameObject.Find("PuntoFuegoIzq");
         puntoDch = GameObject.Find("PuntoFuegoDch");
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-
-    }
+    //Cuando el enemigo entra en contacto con el jugador activa la funcion de recibir daño del mismo
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Player"))
@@ -49,41 +50,47 @@ public class CombateAries : MonoBehaviour
             col.gameObject.GetComponent<Estadisticas>().RecibeDano(dano, transform.position);
         }
     }
+    //Detecta cuando el personaje entra en el área de visión representada por un collider marcado como trigger
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            borde.enabled = true;
+            borde.enabled = true;          //Activa un borde que evita que el personaje salga del área de combate
             player = col.gameObject;
-            persiguePlayer = true;
-            StartCoroutine("PersiguePlayer");
-            StartCoroutine("LanzaBolas");
+            StartCoroutine("PersiguePlayer");       //Activa una función que se ejecuta en paralelo que hace que el enemigo vaya hacia el personaje
+            StartCoroutine("LanzaBolas");           //Activa una función que se ejecuta en paralelo que hace que el enemigo dispare bolas de fuego
             Debug.Log("Voy");
         }
     }
+    //Cuando el personaje abandona el área comentada antes, detiene las funciones de seguimiento y de disparo
     private void OnTriggerExit2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            persiguePlayer = false;
             StopAllCoroutines();
         }
     }
     
+    //Función que se ejecuta cada vez que el personaje alcanza con su arma al enemigo
     public void RecibeDano()
     {
+        //si el enemigo no es invulnerable, entonces se le resta un punto de vida
+        //se le hace invulnerable durante un pequeño intervalo de tiempo para evitar que un solo ataque interactúe varias veces
+        //se cambia el color a rojo para que el jugador sepa que ha conectado el golpe
         if (invulnerable == false)
         {
             vida--;
             invulnerable = true;
             spr.color = Color.red;
             Debug.Log("Golpe Recibido");
+            //Si la vida baja de 0, entonces se ejecuta la animación de muerte
             if (vida <= 0)
             {
                 anim.SetTrigger("Muerte");
             }
             
-            
+            //Si la vida del enemigo baja hasta 5, activa el modo furia del enemigo
+            //aumentando el daño que inflinge a 2 puntos, y activando las animaciones del modo furia
             if (vida <= 5 && !rageMode)
             {
                 rageMode = true;
@@ -95,6 +102,9 @@ public class CombateAries : MonoBehaviour
 
     }
 
+    //Cuando se termina la animación de muerte, se deshabilita el borde
+    //que evita que el personaje salga, activa la posibilidad de interactuar con Corvus,
+    //y destruye el objeto
     void Muerte()
     {
         borde.enabled = false;
@@ -103,18 +113,22 @@ public class CombateAries : MonoBehaviour
 
     }
    
-
+    //Función que devuelve a la normalidad el enemigo
+    //Vuelve a ser vulnerable y el sprite recupera sus colores originales
     public void Mortal()
     {
         spr.color = Color.white;
         invulnerable = false;
     }
 
+    //Función que activa la animación de disparo del enemigo
     void AnimLanzaBolas()
     {
         anim.SetTrigger("Disparo");
     }
 
+    //Función que se ejecuta al final de la animación de disparo
+    //que crea una bola de fuego que se desplaza horizontalmente en la dirección hacia la que esté el enemigo mirando
     public void DisparaBolas()
     {
         
@@ -128,6 +142,8 @@ public class CombateAries : MonoBehaviour
         Destroy(bolaFuego, 2f);
     }
 
+    //Corrutina que hace que el enemigo persiga al personaje teniendo en cuenta la posición del mismo
+    //para ir en una dirección u otra
     IEnumerator PersiguePlayer()
     {
         while (true)
@@ -167,6 +183,7 @@ public class CombateAries : MonoBehaviour
         }
 
     }
+    //Corrutina que cada intervalo de 3 a 6 segundos activa la animación de disparar
     IEnumerator LanzaBolas()
     {
         while (true)

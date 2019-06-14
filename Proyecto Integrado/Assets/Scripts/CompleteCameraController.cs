@@ -4,22 +4,22 @@ using System.Collections;
 public class CompleteCameraController : MonoBehaviour
 {
 
-    public GameObject player;       //Public variable to store a reference to the player game object
+    public GameObject player;       //Variable para guardar el gameObject del personaje
 
 
-    private Vector3 offset;         //Private variable to store the offset distance between the player and camera
+    private Vector3 offset;         //Variable para guardar la distancia entre la cámara y el jugador
 
-    // Use this for initialization
+    // Se inicializa el valor
     void Start()
     {
-        //Calculate and store the offset value by getting the distance between the player's position and camera's position.
+        //Calcula y guarda la distancia entre el jugador y la cámara
         offset = transform.position - player.transform.position;
     }
 
-    // LateUpdate is called after Update each frame
+    //Función que se repite cadad frame
     void LateUpdate()
     {
-        // Set the position of the camera's transform to be the same as the player's, but offset by the calculated offset distance.
+        //La cámara sigue al personaje, respetando siempre la distancia guardada con anterioridad
         if (player != null)
         {
             transform.position = player.transform.position + offset;

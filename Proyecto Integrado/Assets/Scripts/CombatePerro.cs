@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class CombatePerro : MonoBehaviour
 {
+    //Variables
     public int vida;
     public int dano;
     bool invulnerable = false;
 
     GameObject player;
-    bool persiguePlayer;
 
     SpriteRenderer spr;
 
     Rigidbody2D rb;
     Animator anim;
-    // Start is called before the first frame update
+    //Función Start en la que se inicializan las variables que dependan de componentes del objeto
     void Start()
     {
         spr = GetComponent<SpriteRenderer>();
@@ -23,11 +23,14 @@ public class CombatePerro : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
+    //Cada frame, se pasa el valor absoluto de la velocidad del enemigo a su animator
+    //y en caso de que sea superior a 0, ejecuta la animación de correr
     void FixedUpdate()
     {
         anim.SetFloat("velocidad", Mathf.Abs(rb.velocity.x));
     }
+
+    //Cuando el enemigo entra en contacto con el jugador activa la funcion de recibir daño del mismo
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Player"))
@@ -35,33 +38,38 @@ public class CombatePerro : MonoBehaviour
             col.gameObject.GetComponent<Estadisticas>().RecibeDano(dano,transform.position);
         }
     }
+    //Detecta cuando el personaje entra en el área de visión representada por un collider marcado como trigger
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Player"))
         {
             player = col.gameObject;
-            persiguePlayer = true;
-            StartCoroutine("PersiguePlayer");
+            StartCoroutine("PersiguePlayer");       ////Activa una función que se ejecuta en paralelo que hace que el enemigo vaya hacia el personaje
             Debug.Log("Voy");
         }
     }
+    //Cuando el personaje abandona el área comentada antes, detiene la función de seguimiento
     private void OnTriggerExit2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            persiguePlayer = false;
             StopCoroutine("PersiguePlayer");
         }        
     }
+    //Función que se ejecuta cada vez que el personaje alcanza con su arma al enemigo
     public void RecibeDano()
     {
+        //si el enemigo no es invulnerable, entonces se le resta un punto de vida
+        //se le hace invulnerable durante un pequeño intervalo de tiempo para evitar que un solo ataque interactúe varias veces
+        //se le aplica una fuerza que empuja al enemigo en dirección contraria al personaje
         if (invulnerable == false)
         {
             vida--;
             Debug.Log("Golpe Recibido");
+            //Cuando la vida baja de 0, activa la animación de muerte
             if (vida <= 0)
             {
-                dano = 0;
+                
                 anim.SetTrigger("Muerte");
             }
             invulnerable = true;
@@ -80,17 +88,21 @@ public class CombatePerro : MonoBehaviour
         }
         
     }
+
+    //Función que destruye el enemigo al terminar la animación de muerte
     void Muerte()
     {
         Destroy(gameObject);
     }
     
+    //Función que hace volver a ser vulnerable al enemigo
     public void Mortal()
     {
         invulnerable = false;
     }
 
-
+    //Corrutina que hace que el enemigo persiga al personaje teniendo en cuenta la posición del mismo
+    //para ir en una dirección u otra
     IEnumerator PersiguePlayer()
     {
         while (true)

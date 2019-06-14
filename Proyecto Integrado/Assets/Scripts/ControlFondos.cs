@@ -6,13 +6,13 @@ public class ControlFondos : MonoBehaviour
 {
 
     public Animator animFondo;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+    //Cuando el personaje entra en el área del cementerio
+    //delimitada por un trigger, se activa la animación
+    //que hace aparecer los fondos del cementerio
+    //y desaparecer los de la ciudad. Al salir del área
+    //ocurre justo lo contrario desaparecen los del cementerio
+    //y aparecen los de la ciudad
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Player"))

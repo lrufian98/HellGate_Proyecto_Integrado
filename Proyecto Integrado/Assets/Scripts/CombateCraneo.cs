@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class CombateCraneo : MonoBehaviour
 {
+    //Variables
     public int vida;
     public int dano;
     bool invulnerable = false;
 
     GameObject player;
-    bool persiguePlayer;
 
     SpriteRenderer spr;
     Animator anim;
     Rigidbody2D rb;
-    // Start is called before the first frame update
+    //Función Start en la que se inicializan las variables que dependan de componentes del objeto
     void Start()
     {
         spr = GetComponent<SpriteRenderer>();
@@ -23,10 +23,7 @@ public class CombateCraneo : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
-    {
-        
-    }
+    
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Player"))
@@ -39,7 +36,6 @@ public class CombateCraneo : MonoBehaviour
         if (col.gameObject.CompareTag("Player"))
         {
             player = col.gameObject;
-            persiguePlayer = true;
             StartCoroutine("PersiguePlayer");
             Debug.Log("Voy");
         }
@@ -48,7 +44,6 @@ public class CombateCraneo : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            persiguePlayer = false;
             StopCoroutine("PersiguePlayer");
         }        
     }
