@@ -78,7 +78,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.048, y: 1.36}
+  m_Size: {x: 1.76, y: 2.08}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -116,8 +116,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.120609954, y: 0.5203782}
-  m_Size: {x: 1.7102783, y: 1.0407587}
+  m_Offset: {x: -0.08909696, y: 0.5203781}
+  m_Size: {x: 1.0407591, y: 1.0407591}
   m_Direction: 1
 --- !u!114 &3885557753086211452
 MonoBehaviour:
@@ -151,7 +151,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
     oldSize: {x: 2.048, y: 1.36}
-    newSize: {x: 2.048, y: 1.36}
+    newSize: {x: 1.76, y: 2.08}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

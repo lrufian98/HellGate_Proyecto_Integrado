@@ -56,6 +56,7 @@ public class Estadisticas : MonoBehaviour
     public void Mortal()
     {
         invulnerable = false;
+        Debug.Log("mortal");
     }
 
     //Funcion de recibir daño del personaje, los enemigos acceden a la función y le dicen el daño que hacen y la posicion del enemigo
