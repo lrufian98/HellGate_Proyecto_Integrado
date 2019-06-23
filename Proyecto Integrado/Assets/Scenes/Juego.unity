@@ -13361,8 +13361,8 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "<b>Corvus:</b> Enhorabuena, acabas de matar al guardi\xE1n de las puertas
-    del infierno, ahora tanto esa aldea como el resto del mundo est\xE1n condenados
-    a sufrir eternamente."
+    del infierno. Ahora tanto esa aldea como el resto del mundo est\xE1n condenados
+    a sufrir eternamente. A no ser que lo soluciones..."
 --- !u!222 &399869327
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -58631,8 +58631,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "<b>Aldeano:</b> Menos mal que ya est\xE1s aqu\xED, corre, ve al cementerio
-    y oc\xFApate de esos monstruos por favor. La mayor\xEDa de nosotros no podemos
+  m_Text: "<b>Aldeano:</b> Menos mal que ya has llegado, corre, ve al cementerio y
+    oc\xFApate de esos monstruos, por favor. La mayor\xEDa de nosotros no podemos
     ni dormir por miedo."
 --- !u!222 &1749322764
 CanvasRenderer:
@@ -63539,8 +63539,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: <b>Aldeano:</b> Te diriges al cementerio? Espero que se te de bien saltar
-    por los tejados porque tenemos el camino cortado para que no vengan los monstruos.
+  m_Text: "<b>Aldeano:</b> \xBFTe diriges al cementerio? Espero que se te de bien
+    saltar por los tejados, tenemos el camino cortado para que no vengan los monstruos."
 --- !u!222 &1889046619
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -71146,8 +71146,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 3.8}
-  m_SizeDelta: {x: 677.3, y: 117.9}
+  m_AnchoredPosition: {x: 0, y: 3.4}
+  m_SizeDelta: {x: 677.3, y: 133.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2094942262
 MonoBehaviour:
